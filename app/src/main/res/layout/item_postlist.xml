@@ -56,19 +56,16 @@
                     android:id="@+id/textview_item_postlist_name"
                     style="@style/PostTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
                     android:maxLines="2"
                     android:minLines="1"
                     android:text="hello world"
-                    app:autoSizeTextType="uniform"
 
                     />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2">
+                    android:layout_height="wrap_content">
 
 
                     <TextView
