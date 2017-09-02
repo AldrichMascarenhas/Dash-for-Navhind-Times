@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NewsItemDetailTextTime">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="NewsItemDetailTextTitle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:lineSpacingMultiplier">@dimen/display_1_spacing</item>
+    </style>
+
+    <style name="NewsItemDetailTextContent">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:lineSpacingMultiplier">@dimen/body_2_spacing</item>
+    </style>
+
+    <style name="AppTheme.MaterialAboutFragment" parent="Theme.Mal.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>

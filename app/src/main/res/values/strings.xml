@@ -1,0 +1,74 @@
+<resources>
+
+    <string name="app_name">Dash for NT</string>
+
+    <string name="menu_main_nav__home_feed">Home Feed</string>
+    <string name="menu_main_nav__people">Friends</string>
+    <string name="menu_main_nav__favorites">Favorites</string>
+    <string name="menu_main_nav__map">Map</string>
+    <string name="menu_main_nav__settings">Settings</string>
+    <string name="menu_main_nav__feedback">Feedback</string>
+
+    <string name="view_main_header__email">yourname@gmail.com</string>
+
+    <string name="fragment_homefeed__title">Home Feed</string>
+    <string name="menu_homefeed__settings">Settings</string>
+    <string name="menu_homefeed__filters">Filters</string>
+
+    <string name="fragment_people__title">Friends</string>
+    <string name="fragment_people__lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ex eorum enim scriptis et institutis cum omnis doctrina liberalis, omnis historia. Haec dicuntur inconstantissime. Ut in voluptate sit, qui epuletur, in dolore, qui torqueatur. Hoc etsi multimodis reprehendi potest, tamen accipio, quod dant. Non dolere, inquam, istud quam vim habeat postea videro.</string>
+    <string name="menu_people__settings">Settings</string>
+    <string name="menu_people__search">Search</string>
+
+    <string name="fragment_favorites__title">Favorites</string>
+    <string name="menu_favorites__settings">Settings</string>
+    <string name="menu_favorites__heart">Favorite</string>
+
+    <string name="fragment_map__title">Map</string>
+    <string name="fragment_map__search">Search…</string>
+
+    <string name="menu_person_details__share">Share</string>
+    <string name="menu_person_details__favorite">Favorite</string>
+
+
+    <!--App News Categories-->
+    <string name="menu_new_posts">New Posts</string>
+
+    <string name="drawer_item_section_header">News Categories</string>
+
+    <string name="menu_goa_news">Goa News</string>
+    <string name="menu_national_news">National News</string>
+    <string name="menu_world_news">World News</string>
+    <string name="menu_breaking_news">Breaking News</string>
+    <string name="menu_business">Business</string>
+    <string name="menu_zest">Zest</string>
+    <string name="menu_panorama">Panorama</string>
+    <string name="menu_buzz">Buzz</string>
+    <string name="menu_supplements">Supplements</string>
+    <string name="menu_b_and_c">B and C</string>
+    <string name="menu_editorial">Editorial</string>
+    <string name="menu_kurio_city">Kurio City</string>
+    <string name="menu_commentary">Commentary</string>
+    <string name="menu_video_news">Video News</string>
+
+
+    <!-- Endpoint-->
+    <string name="endpoint">http://www.navhindtimes.in/wp-json/wp/v2/</string>
+
+    <!-- Error Views-->
+    <string name="error_view_title_error">Something went terribly wrong</string>
+    <string name="error_view_subtitle_error">We are fixing it</string>
+    <string name="error_view_retry_error">TRY AGAIN</string>
+
+    <string name="error_view_title_failure">Something went wrong</string>
+    <string name="error_view_subtitle_failure">Check your Network Connection</string>
+    <string name="error_view_retry_failure">CHECK SETTING</string>
+
+    <!-- Material Tap Target Values-->
+    <string name="menu_prompt_title">Just how you want it</string>
+    <string name="menu_prompt_description">Tap the menu icon to switch accounts, change settings &amp; more</string>
+
+    <string name="player_error">Error initializing YouTube player: %s</string>
+
+
+</resources>
