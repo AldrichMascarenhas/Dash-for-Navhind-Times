@@ -2,21 +2,21 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
 
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:padding="4dp">
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview_item_postlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         card_view:cardCornerRadius="1dp"
         card_view:cardElevation="2dp"
-        card_view:cardUseCompatPadding="true">
+        card_view:cardUseCompatPadding="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,10 +58,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="5"
+                    android:maxLines="2"
+                    android:minLines="1"
                     android:text="hello world"
                     app:autoSizeTextType="uniform"
-                    android:maxLines="2"
-                    android:minLines="2"
 
                     />
 
