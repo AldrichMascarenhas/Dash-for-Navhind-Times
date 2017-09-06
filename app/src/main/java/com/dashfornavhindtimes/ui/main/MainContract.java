@@ -26,11 +26,6 @@ public interface MainContract {
 
     interface View extends BaseView {
 
-//        void closeDrawer();
-//
-//        void openDrawer();
-
-
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -40,7 +35,6 @@ public interface MainContract {
         void clickedCategory(int categoryNumber, String categoryName);
 
         void clickedAppSetting();
-
 
     }
 }

@@ -11,7 +11,7 @@ public interface BasePresenter<V extends BaseView> {
 
     boolean isViewAttached();
 
-
+    //TODO: Implement function
 //    void checkViewAttached();
 //
 //    class MvpViewNotAttachedException extends RuntimeException {

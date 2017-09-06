@@ -31,9 +31,7 @@ public class MainPresenter implements MainContract.Presenter {
         return this.view != null;
     }
 
-    ////////////
-
-
+    
     @Override
     public void defaultCategory() {
 

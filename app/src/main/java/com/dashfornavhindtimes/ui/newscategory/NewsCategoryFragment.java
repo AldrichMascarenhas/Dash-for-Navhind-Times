@@ -58,7 +58,6 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
     LinearLayoutManager linearLayoutManager;
     private EndlessRecyclerOnScrollListener endlessRecyclerOnScrollListener;
 
-    //Firebase Analytics
     private FirebaseAnalytics firebaseAnalytics;
 
     public NewsCategoryFragment() {
@@ -84,7 +83,6 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
 
         firebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
 
-
     }
 
     @Nullable
@@ -104,7 +102,6 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
         if (newsCategoryListAdapter.isEmpty()) {
             presenter.onInitialListRequested(getArguments().getInt(CATEGORY_NUMBER), 1);
         }
-
 
         return view;
 
@@ -259,9 +256,6 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
     @Override
     public void onDestroyView() {
         recyclerView.setAdapter(null);
-//        TODO: Uncommenting this will call views to be set to null when scrolling the Viewpager
-//        unbinder.unbind();
-
         super.onDestroyView();
     }
 

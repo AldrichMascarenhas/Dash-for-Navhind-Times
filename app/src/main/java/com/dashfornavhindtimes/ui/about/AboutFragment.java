@@ -3,6 +3,7 @@ package com.dashfornavhindtimes.ui.about;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.BuildConfig;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,6 @@ import com.mikepenz.iconics.IconicsDrawable;
 public class AboutFragment extends MaterialAboutFragment {
 
     public AboutFragment() {
-        // Required empty public constructor
     }
 
 
@@ -32,77 +32,73 @@ public class AboutFragment extends MaterialAboutFragment {
 
         MaterialAboutCard.Builder appCardBuilder = new MaterialAboutCard.Builder();
 
-        // Add items to card
-
         appCardBuilder.addItem(new MaterialAboutTitleItem.Builder()
-                .text("Dash for Navhind Times")
+                .text(R.string.app_name_full)
                 .icon(R.mipmap.ic_launcher)
                 .build());
 
         appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Version")
-                .subText("1.0.0")
+                .text(R.string.about_version)
+                .subText(com.dashfornavhindtimes.BuildConfig.VERSION_NAME)
                 .icon(new IconicsDrawable(c)
                         .icon(GoogleMaterial.Icon.gmd_info_outline)
                         .sizeDp(18))
                 .build());
 
+        //TODO : Fix wrong package
         appCardBuilder.addItem(ConvenienceBuilder.createRateActionItem(c,
                 new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_star)
                         .sizeDp(18),
-                "Rate this app",
+                getString(R.string.about_rate),
                 null
         ));
 
 
-
         appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Releases")
+                .text(R.string.about_releases)
                 .icon(new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_rocket)
                         .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, "Releases", "https://github.com/AldrichMascarenhas/Dash-for-Navhind-Times/releases", true, false))
+                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, getString(R.string.about_releases), getString(R.string.about_releases_link), true, false))
 
                 .build());
 
         appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Legal")
+                .text(R.string.about_legal)
                 .icon(new IconicsDrawable(c)
                         .icon(GoogleMaterial.Icon.gmd_gavel)
                         .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, "Legal", "https://github.com/AldrichMascarenhas/Dash-for-Navhind-Times/blob/master/LEGAL.md", true, false))
+                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, getString(R.string.about_legal), getString(R.string.about_legal_link), true, false))
 
                 .build());
 
         appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("License")
+                .text(R.string.about_license)
                 .icon(new IconicsDrawable(c)
                         .icon(GoogleMaterial.Icon.gmd_book)
                         .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, "License", "https://github.com/AldrichMascarenhas/Dash-for-Navhind-Times/blob/master/LICENSE.md/LICENSE.md", true, false))
+                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, getString(R.string.about_license), getString(R.string.about_license_link), true, false))
 
                 .build());
 
-        ////////
-
         MaterialAboutCard.Builder authorCardBuilder = new MaterialAboutCard.Builder();
-        authorCardBuilder.title("Author");
+        authorCardBuilder.title(R.string.about_author);
 
         authorCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Aldrich Mascarenhas")
-                .subText("NerdCutlet Productions")
+                .text(R.string.about_author_name)
+                .subText(R.string.about_author_company)
                 .icon(new IconicsDrawable(c)
                         .icon(GoogleMaterial.Icon.gmd_person)
                         .sizeDp(18))
                 .build());
 
         authorCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Fork on GitHub")
+                .text(R.string.about_fork_on_github)
                 .icon(new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_github_circle)
                         .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebsiteOnClickAction(c, Uri.parse("https://github.com/AldrichMascarenhas/Dash-for-Navhind-Times")))
+                .setOnClickAction(ConvenienceBuilder.createWebsiteOnClickAction(c, Uri.parse(getString(R.string.about_fork_on_github_link))))
                 .build());
 
 
@@ -110,28 +106,27 @@ public class AboutFragment extends MaterialAboutFragment {
                 new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_earth)
                         .sizeDp(18),
-                "Visit Website",
+                getString(R.string.about_visit_website),
                 true,
-                Uri.parse("http://aldrichmascarenhas.com/")));
+                Uri.parse(getString(R.string.about_visit_website_link))));
 
         authorCardBuilder.addItem(ConvenienceBuilder.createEmailItem(c,
                 new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_email)
                         .sizeDp(18),
-                "Send an email",
+                getString(R.string.about_send_email),
                 true,
-                "nerdcutletproductions@gmail.com",
-                "Question concerning Dash for Navhind Times"));
+                getString(R.string.about_send_email_address),
+                getString(R.string.about_send_email_subject)));
 
-        /////
 
         MaterialAboutCard.Builder legalCardBuilder = new MaterialAboutCard.Builder();
-        legalCardBuilder.title("Disclaimer");
+        legalCardBuilder.title(R.string.about_disclaimer);
 
 
         legalCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Please Note")
-                .subText("This App is not the Official Navhind Times App")
+                .text(R.string.about_disclaimer_text_header)
+                .subText(R.string.about_disclaimer_text_subtext)
                 .icon(new IconicsDrawable(c)
                         .icon(GoogleMaterial.Icon.gmd_person)
                         .sizeDp(18))
@@ -140,9 +135,6 @@ public class AboutFragment extends MaterialAboutFragment {
 
 
         return new MaterialAboutList(appCardBuilder.build(), authorCardBuilder.build(),legalCardBuilder.build() );
-
-
-
 
     }
 

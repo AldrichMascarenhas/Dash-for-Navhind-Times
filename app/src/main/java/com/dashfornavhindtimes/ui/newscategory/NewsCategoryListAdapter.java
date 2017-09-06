@@ -21,27 +21,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Aldrich on 12-Jun-17.
  */
 
 public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    //Ref : https://guides.codepath.com/android/Heterogenous-Layouts-inside-RecyclerView
-    Context context;
+    private Context context;
     private final List<Post> mPostList;
     private InteractionListener mListInteractionListener;
 
-    long time, now;
-    SimpleDateFormat sdf;
-    CharSequence ago;
+    //Date variables
+    private long time, now;
+    private SimpleDateFormat sdf;
+    private CharSequence ago;
 
     private final int NOIMAGE = 0, IMAGE = 1;
-    public  final int VIEW_TYPE_LOADING = 2;
+    private final int VIEW_TYPE_LOADING = 2;
 
-    int titleCategoryNumber;
-    String categoryName;
-
+    private int titleCategoryNumber;
+    private String categoryName;
 
     public NewsCategoryListAdapter(Context context, int titleCategoryNumber, String categoryName) {
         mPostList = new ArrayList<>();
@@ -62,10 +64,9 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemViewType(int position) {
-        if(mPostList.get(position) == null){
-            return  VIEW_TYPE_LOADING;
-        }
-       else if (mPostList.get(position).getFeaturedMedia() == 0) {
+        if (mPostList.get(position) == null) {
+            return VIEW_TYPE_LOADING;
+        } else if (mPostList.get(position).getFeaturedMedia() == 0) {
             return NOIMAGE;
         } else {
             return IMAGE;
@@ -118,9 +119,6 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
 
-
-
-
     private RecyclerView.ViewHolder onIndicationViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_progress_bar, parent, false);
         return new ProgressBarViewHolder(view);
@@ -132,7 +130,7 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
         noImagePostViewHolder.name.setText(mPostList.get(position).getTitle().getRendered());
         noImagePostViewHolder.cateogryname.setText(categoryName);
 
-        sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        sdf = new SimpleDateFormat(context.getString(R.string.date_format));
         sdf.setTimeZone(TimeZone.getDefault());
         try {
             time = sdf.parse(mPostList.get(position).getDateGmt()).getTime();
@@ -140,7 +138,7 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
             ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
             noImagePostViewHolder.time.setText(ago);
         } catch (ParseException e) {
-            noImagePostViewHolder.time.setText("FAIL");
+            noImagePostViewHolder.time.setText(R.string.date_parse_error);
         }
 
 
@@ -153,7 +151,7 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
         hasImagePostViewHolder.name.setText(mPostList.get(position).getTitle().getRendered());
         hasImagePostViewHolder.cateogryname.setText(categoryName);
 
-        sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        sdf = new SimpleDateFormat(context.getString(R.string.date_format));
         sdf.setTimeZone(TimeZone.getDefault());
         try {
             time = sdf.parse(mPostList.get(position).getDateGmt()).getTime();
@@ -161,7 +159,7 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
             ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
             hasImagePostViewHolder.time.setText(ago);
         } catch (ParseException e) {
-            hasImagePostViewHolder.time.setText("FAIL");
+            hasImagePostViewHolder.time.setText(R.string.date_parse_error);
         }
 
 
@@ -169,7 +167,6 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
         hasImagePostViewHolder.imageft.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent));
 
     }
-
 
 
     @Override
@@ -193,21 +190,23 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public class HasImagePostViewHolder extends RecyclerView.ViewHolder {
 
-        public final View listItem;
-        public final TextView name;
-        public final ImageView imageft;
-        public final TextView time;
-        public final TextView cateogryname;
+        View listItem;
+
+        @BindView(R.id.textview_item_postlist_image_name)
+        TextView name;
+        @BindView(R.id.imageview_item_postlist_image_post)
+        ImageView imageft;
+        @BindView(R.id.textview_item_postlist_image_time)
+        TextView time;
+        @BindView(R.id.textview_item_postlist_image_categoryname)
+        TextView cateogryname;
 
 
         public HasImagePostViewHolder(View view) {
             super(view);
-            listItem = view;
+            ButterKnife.bind(this, view);
 
-            name = (TextView) view.findViewById(R.id.textview_item_postlist_image_name);
-            imageft = (ImageView) view.findViewById(R.id.imageview_item_postlist_image_post);
-            time = (TextView) view.findViewById(R.id.textview_item_postlist_image_time);
-            cateogryname = (TextView) view.findViewById(R.id.textview_item_postlist_image_categoryname);
+            listItem = view;
             listItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -228,21 +227,22 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public class NoImagePostViewHolder extends RecyclerView.ViewHolder {
 
-        public final View listItem;
-        public final TextView name;
-        public final ImageView imageft;
-        public final TextView time;
-        public final TextView cateogryname;
+        View listItem;
+
+        @BindView(R.id.textview_item_postlist_name)
+        TextView name;
+        @BindView(R.id.imageview_item_postlist_post)
+        ImageView imageft;
+        @BindView(R.id.textview_item_postlist_time)
+        TextView time;
+        @BindView(R.id.textview_item_postlist_categoryname)
+        TextView cateogryname;
 
 
         public NoImagePostViewHolder(View view) {
             super(view);
+            ButterKnife.bind(this, view);
             listItem = view;
-
-            name = (TextView) view.findViewById(R.id.textview_item_postlist_name);
-            imageft = (ImageView) view.findViewById(R.id.imageview_item_postlist_post);
-            time = (TextView) view.findViewById(R.id.textview_item_postlist_time);
-            cateogryname = (TextView) view.findViewById(R.id.textview_item_postlist_categoryname);
             listItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -262,11 +262,12 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public class ProgressBarViewHolder extends RecyclerView.ViewHolder {
 
-        public final ProgressBar progressBar;
+        @BindView(R.id.progress_bar)
+        ProgressBar progressBar;
 
         public ProgressBarViewHolder(View view) {
             super(view);
-            progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+            ButterKnife.bind(this, view);
         }
     }
 
@@ -303,8 +304,6 @@ public class NewsCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.V
         mPostList.remove(position);
         notifyItemRemoved(position);
     }
-
-
 
 
     /**

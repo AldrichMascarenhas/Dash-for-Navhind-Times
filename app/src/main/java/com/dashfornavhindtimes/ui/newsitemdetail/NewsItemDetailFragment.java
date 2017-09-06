@@ -83,13 +83,12 @@ public class NewsItemDetailFragment extends Fragment implements NewsItemDetailCo
     private Post post;
 
     private SimpleDateFormat sdf;
-    long time, now;
-    CharSequence ago;
+    private long time, now;
+    private CharSequence ago;
 
     @Inject
     NewsItemDetailPresenter presenter;
 
-    //Firebase Analytics
     private FirebaseAnalytics firebaseAnalytics;
 
 
@@ -159,7 +158,7 @@ public class NewsItemDetailFragment extends Fragment implements NewsItemDetailCo
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        sdf = new SimpleDateFormat(getString(R.string.date_format));
         sdf.setTimeZone(TimeZone.getDefault());
         try {
             time = sdf.parse(post.getDateGmt()).getTime();
@@ -167,7 +166,7 @@ public class NewsItemDetailFragment extends Fragment implements NewsItemDetailCo
             ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
             post_time.setText(ago);
         } catch (ParseException e) {
-            post_time.setText("Error in retrieving post time");
+            post_time.setText(R.string.date_parse_error);
         }
 
         post_title.setText(post.getTitle().getRendered());
@@ -189,7 +188,7 @@ public class NewsItemDetailFragment extends Fragment implements NewsItemDetailCo
             }
 
         } catch (Exception e) {
-
+            Toast.makeText(getActivity(), R.string.youtube_id_parse_error, Toast.LENGTH_LONG).show();
         }
 
 
@@ -247,7 +246,7 @@ public class NewsItemDetailFragment extends Fragment implements NewsItemDetailCo
         i.setType("text/plain");
         i.putExtra(Intent.EXTRA_SUBJECT, "Sharing URL");
         i.putExtra(Intent.EXTRA_TEXT, post.getTitle().getRendered() + " : " + post.getLink());
-        startActivity(Intent.createChooser(i, "Share URL"));
+        startActivity(Intent.createChooser(i, getString(R.string.article_share_text)));
     }
     ///
 
@@ -255,7 +254,7 @@ public class NewsItemDetailFragment extends Fragment implements NewsItemDetailCo
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
-            youTubePlayer.cueVideo(youtubeUrl); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+            youTubePlayer.cueVideo(youtubeUrl);
         }
     }
 

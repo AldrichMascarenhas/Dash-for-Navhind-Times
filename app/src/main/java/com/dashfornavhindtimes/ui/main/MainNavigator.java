@@ -3,6 +3,7 @@ package com.dashfornavhindtimes.ui.main;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
+import com.dashfornavhindtimes.R;
 import com.dashfornavhindtimes.data.model.Post.Post;
 import com.dashfornavhindtimes.ui.about.AboutFragment;
 import com.dashfornavhindtimes.ui.newscategory.NewsCategoryFragment;
@@ -66,7 +67,7 @@ public class MainNavigator implements MainContract.Navigator {
         clearDetails();
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_EMPTY);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
-        NewsCategoryFragment master = NewsCategoryFragment.newInstance(1, "New Posts");
+        NewsCategoryFragment master = NewsCategoryFragment.newInstance(1, mainActivity.getString(R.string.menu_new_posts));
         mainActivity.getSupportFragmentManager().beginTransaction().replace(com.dashfornavhindtimes.R.id.activity_main__frame_master, master, TAG_MASTER).commitNow();
     }
 

@@ -38,8 +38,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Inject
     MainContract.Navigator navigator;
 
-
-    //save our header or result
+    //Drawer Variables
     private AccountHeader headerResult = null;
     private Drawer result = null;
 
@@ -50,7 +49,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     private MainComponent mainComponent;
 
-    //Firebase Analytics
     private FirebaseAnalytics firebaseAnalytics;
 
     @Override
@@ -109,9 +107,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                         new SecondaryDrawerItem().withName(R.string.menu_commentary).withIcon(FontAwesome.Icon.faw_tag).withIdentifier(4),
                         new SecondaryDrawerItem().withName(R.string.menu_video_news).withIcon(FontAwesome.Icon.faw_tag).withIdentifier(16),
 
-                        new SectionDrawerItem().withName("Settings"),
+                        new SectionDrawerItem().withName(R.string.menu_settings),
 
-                        new SecondaryDrawerItem().withName("About").withIcon(FontAwesome.Icon.faw_cog).withIdentifier(999)
+                        new SecondaryDrawerItem().withName(R.string.menu_about).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(999)
 
 
 
@@ -222,11 +220,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 super.onBackPressed();
             }
 
-
         }
-
-
-
 
     }
 

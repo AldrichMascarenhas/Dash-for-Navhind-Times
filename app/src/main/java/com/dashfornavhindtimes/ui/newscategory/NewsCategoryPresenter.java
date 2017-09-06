@@ -27,7 +27,7 @@ public class NewsCategoryPresenter implements NewsCategoryContract.Presenter {
     @Inject
     public NewsCategoryPresenter(Context context, NewsCategoryContract.Navigator navigator, NavhindTimesService navhindTimesService) {
         this.navigator = navigator;
-        this.context = context; //TODO: remove context
+        this.context = context;
         this.navhindTimesService = navhindTimesService;
 
     }
@@ -47,7 +47,6 @@ public class NewsCategoryPresenter implements NewsCategoryContract.Presenter {
         return this.view != null;
     }
 
-    ////////////
 
     @Override
     public void onInitialListRequested(int CATEGORY_NUMBER, int PAGE_NO) {
@@ -94,7 +93,6 @@ public class NewsCategoryPresenter implements NewsCategoryContract.Presenter {
 
                     }
                 } else {
-                    // error response, no access to resource?
                     view.showError();
                 }
 
@@ -106,7 +104,6 @@ public class NewsCategoryPresenter implements NewsCategoryContract.Presenter {
                     return;
                 }
                 view.onFailure();
-
 
             }
         });
